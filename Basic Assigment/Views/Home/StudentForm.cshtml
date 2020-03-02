@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "StudentForm";
 }
-    <body onload="insertNewRecord()">
+    
         <table id="maimTable">
             <tr>
                 <td>
@@ -28,7 +28,7 @@
                             <br />
                             <label>Course</label><label class="validation-error hide" id="courseValidationError">This field is required.</label>
                             <select name="course" id="course" class="form-control">
-                                <option selected="selected" value="select">Select</option>
+                                
                                 <option value="HTML">HTML</option>
                                 <option value="CSS">CSS</option>
                                 <option value=".Net">.Net</option>
@@ -65,8 +65,7 @@
             <tbody>
             </tbody>
         </table>
-    </body>
-
+    
 <link href="~/css/studentFormcss.css" rel="stylesheet" />
 <script src="~/js/studentForm.js"></script>
 
