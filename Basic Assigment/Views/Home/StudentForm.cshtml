@@ -19,14 +19,25 @@
                 <div>
                     <label>CNIC</label><label class="validation-error hide" id="CNICvalidationError">This field is required.</label>
                     <input type="text" name="CNIC" id="CNIC">
+                        <label>Phone</label><label class="validation-error hide" id="phonevalidationError">This field is required.</label>
+                        <input type="text" name="phone" id="phone">
+                   
                 </div>
-                <div>
+                <div><br />
                     <label>Course</label><label class="validation-error hide" id="courseValidationError">This field is required.</label>
-                    <input type="text" name="course" id="course">
+                    <select name="course" id="course">
+                         <option selected="selected" value="select">Select</option>
+                        <option  value="one">HTML</option>
+                        <option value="two">CSS</option>
+                        <option value="three">.Net</option>
+                    </select>
                 </div>
                 <div>
-                    <label>Gender</label><label class="validation-error hide" id="courseValidationError">This field is required.</label>
-                    <input type="text" name="course" id="course">
+                    <label>Gender</label><br />
+                    <input type="radio" name="gender" id="male" value="Male">
+                    <label for="male">Male</label>
+                    <input type="radio" name="gender" id="female" value="Female">
+                    <label for="female">Female</label>
                 </div>
                 <div class="form-action-buttons">
                     <input type="submit" value="Submit">
@@ -44,6 +55,7 @@
             <th>Father Name</th>
             <th>CNIC</th>
             <th>Course</th>
+            <th>Gender</th>
             <th></th>
         </tr>
     </thead>

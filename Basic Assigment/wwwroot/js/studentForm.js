@@ -10,7 +10,6 @@ function onFormSubmit() {
         resetForm();
     }
 }
-
 function readFormData() {
     var formData = {};
     formData["fullName"] = document.getElementById("fullName").value;
@@ -19,7 +18,6 @@ function readFormData() {
     formData["course"] = document.getElementById("course").value;
     return formData;
 }
-
 function insertNewRecord(data) {
     var table = document.getElementById("studentList").getElementsByTagName('tbody')[0];
     var newRow = table.insertRow(table.length);
