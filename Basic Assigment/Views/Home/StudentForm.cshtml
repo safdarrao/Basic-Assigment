@@ -2,7 +2,7 @@
 @{
     ViewData["Title"] = "StudentForm";
 }
-    
+    <body onload="PopulateDate()">
         <table id="maimTable">
             <tr>
                 <td>
@@ -28,7 +28,7 @@
                             <br />
                             <label>Course</label><label class="validation-error hide" id="courseValidationError">This field is required.</label>
                             <select name="course" id="course" class="form-control">
-                                
+
                                 <option value="HTML">HTML</option>
                                 <option value="CSS">CSS</option>
                                 <option value=".Net">.Net</option>
@@ -36,7 +36,7 @@
                         </div>
                         <div>
                             <label>Gender</label><br />
-                            <input type="radio" name="gender" id="male" value="Male">
+                            <input type="radio" Selected name="gender" id="male" value="Male">
                             <label for="male">Male</label>
                             <input type="radio" name="gender" id="female" value="Female">
                             <label for="female">Female</label>
@@ -59,13 +59,16 @@
                     <th>phone</th>
                     <th>Course</th>
                     <th>Gender</th>
+                    <th>Action</th>
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tblStudent">
             </tbody>
         </table>
-    
+
+    </body>
+      
 <link href="~/css/studentFormcss.css" rel="stylesheet" />
 <script src="~/js/studentForm.js"></script>
 

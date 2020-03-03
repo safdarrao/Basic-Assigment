@@ -1,29 +1,50 @@
-﻿var selectedRow = null
-
+﻿var rowIndex =-1;
 function onFormSubmit() {
-    if (validate()) {
-        var formData = readFormData();
-        if (selectedRow == null)
-            insertNewRecord(formData);
-        else
-            updateRecord(formData);
-        resetForm();
+    debugger
+    if (!validate()) {
+        return;
+    }
+    else {
+        readFormData();
     }
 }
-    function readFormData() {
-        var formData = {};
-        formData["fullName"] = document.getElementById("fullName").value;
-        formData["FthName"] = document.getElementById("FthName").value;
-        formData["CNIC"] = document.getElementById("CNIC").value;
-        formData["phone"] = document.getElementById("phone").value;
-        formData["course"] = document.getElementById("course").value;
-        formData["male"] = document.getElementById("male").value;
-        formData["female"] = document.getElementById("female").value;
-        return formData;
+function readFormData() {
+    debugger
+    var obj = {};
+    obj["fullName"] = document.getElementById("fullName").value;
+    obj["FthName"] = document.getElementById("FthName").value;
+    obj["CNIC"] = document.getElementById("CNIC").value;
+    obj["phone"] = document.getElementById("phone").value;
+    obj["course"] = document.getElementById("course").value;
+    obj["male"] = document.getElementById("male").value;
+    
+
+    var dataList = new Array();
+    var arrayList = JSON.parse(localStorage.getItem("studentRecord"));
+    if (arrayList !== null) {
+        dataList = arrayList
     }
-    function insertNewRecord(data) {
-        var table = document.getElementById("studentList").getElementsByTagName('tbody')[0];
-        var newRow = table.insertRow(table.length);
+
+    if (rowIndex == -1) {
+
+        dataList.push(obj)
+    }
+    else {
+        dataList[rowIndex] = obj;
+    }
+    localStorage.setItem('studentRecord', JSON.stringify(dataList));
+    resetForm();
+    PopulateDate();
+}
+
+function PopulateDate() {
+    debugger
+    var arraylist = JSON.parse(localStorage.getItem("studentRecord"));
+    document.getElementById("tblStudent").innerHTML = '';
+    var table = document.getElementById("tblStudent");
+    for (var key in arraylist) {
+        var data = arraylist[key];
+        var newRow = table.insertRow(key);
         cell1 = newRow.insertCell(0);
         cell1.innerHTML = data.fullName;
         cell2 = newRow.insertCell(1);
@@ -36,46 +57,54 @@ function onFormSubmit() {
         cell5.innerHTML = data.course;
         cell6 = newRow.insertCell(5);
         cell6.innerHTML = data.male;
-        cell6.innerHTML = data.female;
         cell7 = newRow.insertCell(6);
         cell7.innerHTML = `<a onClick="onEdit(this)">Edit</a>
                        <a onClick="onDelete(this)">Delete</a>`;
     }
-    function resetForm() {
-        document.getElementById("fullName").value = "";
-        document.getElementById("FthName").value = "";
-        document.getElementById("CNIC").value = "";
-        document.getElementById("phone").value = "";
-        document.getElementById("course").value = "";
 
-        selectedRow = null;
-    }
-
-    function onEdit(td) {
-        selectedRow = td.parentElement.parentElement;
-        document.getElementById("fullName").value = selectedRow.cells[0].innerHTML;
-        document.getElementById("FthName").value = selectedRow.cells[1].innerHTML;
-        document.getElementById("CNIC").value = selectedRow.cells[2].innerHTML;
-        document.getElementById("phone").value = selectedRow.cells[3].innerHTML;
-        document.getElementById("course").value = selectedRow.cells[4].innerHTML;
-    }
-    function updateRecord(formData) {
-        selectedRow.cells[0].innerHTML = formData.fullName;
-        selectedRow.cells[1].innerHTML = formData.FthName;
-        selectedRow.cells[2].innerHTML = formData.CNIC;
-        selectedRow.cells[3].innerHTML = formData.phone;
-        selectedRow.cells[4].innerHTML = formData.course;
-
-    }
-
-    function onDelete(td) {
-        if (confirm('Are you sure to delete this record ?')) {
-            row = td.parentElement.parentElement;
-            document.getElementById("studentList").deleteRow(row.rowIndex);
-            resetForm();
-        }
 }
-function validate() {
+
+
+function resetForm() {
+    document.getElementById("fullName").value = "";
+    document.getElementById("FthName").value = "";
+    document.getElementById("CNIC").value = "";
+    document.getElementById("phone").value = "";
+    document.getElementById("course").value = "";
+    rowIndex = -1;
+}
+
+function onEdit(td) {
+    debugger
+    rowIndex = td.parentNode.parentNode.rowIndex - 1;
+    var arraylist = JSON.parse(localStorage.getItem("studentRecord"));
+    var obj = arraylist[rowIndex];
+    document.getElementById("fullName").value = obj.fullName;
+    document.getElementById("FthName").value = obj.FthName;
+    document.getElementById("CNIC").value = obj.CNIC;
+    document.getElementById("phone").value = obj.phone;
+    document.getElementById("course").value = obj.course;
+}
+
+function updateRecord(formData) {
+    selectedRow.cells[0].innerHTML = formData.fullName;
+    selectedRow.cells[1].innerHTML = formData.FthName;
+    selectedRow.cells[2].innerHTML = formData.CNIC;
+    selectedRow.cells[3].innerHTML = formData.phone;
+    selectedRow.cells[4].innerHTML = formData.course;
+
+}
+
+function onDelete(td) {
+    if (confirm('Are you sure to delete this record ?')) {
+        rowIndex = td.parentNode.parentNode.rowIndex - 1;
+        var arraylist = JSON.parse(localStorage.getItem("studentRecord"));
+        arraylist.splice(rowIndex, 1);
+        localStorage.setItem('studentRecord', JSON.stringify(arraylist));
+        PopulateDate();
+    }
+}
+function validate(){
     isValid = true;
     if (document.getElementById("fullName").value == "") {
         document.getElementById("fullNameValidationError").classList.remove("hide");
@@ -108,14 +137,11 @@ function validate() {
         if (!document.getElementById("phonevalidationError").classList.contains("hide"))
             document.getElementById("phonevalidationError").classList.add("hide");
 
-    //} if (document.getElementById("course").value == "select") {
-    //    document.getElementById("courseValidationError").classList.remove("hide");
-    //    isValid = false;
-    //} else {
-    //    isValid = true;
-    //    if (!document.getElementById("courseValidationError").classList.contains("hide"))
-    //        document.getElementById("courseValidationError").classList.add("hide");
+        } if (document.getElementById("course").value == "select") {
+            document.getElementById("courseValidationError").classList.remove("hide");
+            isValid = false;
+        
     }
-        return isValid;
-    }
+    return isValid;
+}
 
