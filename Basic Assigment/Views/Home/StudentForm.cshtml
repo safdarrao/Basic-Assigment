@@ -2,73 +2,71 @@
 @{
     ViewData["Title"] = "StudentForm";
 }
-    <body onload="PopulateDate()">
-        <table id="maimTable">
+<body onload="PopulateDate()">
+    <table id="maimTable">
+        <tr>
+            <td>
+                <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+                    <div><h2>Student Registration Form</h2></div>
+                    <div>
+                        <label>Full Name*</label><label class="validation-error hide" id="fullNameValidationError">This field is required.</label>
+                        <input type="text" name="fullName" id="fullName">
+
+
+                        <label>Father Name</label><label class="validation-error hide" id="fthNameValidationError">This field is required.</label>
+                        <input type="text" name="FthName" id="FthName">
+                    </div>
+                    <div>
+                        <label>&nbsp;&nbsp;CNIC</label><label class="validation-error hide" id="CNICvalidationError"> This field is required.</label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" name="CNIC" id="CNIC">
+
+                        <label>&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;Phone</label><label class="validation-error hide" id="phonevalidationError">This field is required.</label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="phone" id="phone">
+                    </div>
+                    <br />
+                    <label>Course</label><label class="validation-error hide" id="courseValidationError">This field is required.</label>
+                    <select name="course" id="course" class="form-control">
+
+                        <option value="HTML">HTML</option>
+                        <option value="CSS">CSS</option>
+                        <option value=".Net">.Net</option>
+                    </select>
+
+                    <div>
+                        <label>Gender</label><br />
+                        <input type="radio" checked name="gender" id="male" value="Male">
+                        <label for="male">Male</label>
+                        <input type="radio" name="gender" id="female" value="Female">
+                        <label for="female">Female</label>
+                    </div>
+                    <div class="form-action-buttons">
+                        <button class="btn btn-primary" value="Submit">Save</button>
+                    </div>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <br />
+    <br />
+    <table class="list" id="studentList">
+        <thead>
             <tr>
-                <td>
-                    <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
-                        <div><h2>Student Registration Form</h2></div>
-                        <div>
-                            <label>Full Name*</label><label class="validation-error hide" id="fullNameValidationError">This field is required.</label>
-                            <input type="text" name="fullName" id="fullName">
-                        </div>
-                        <div>
-
-                            <label>Father Name</label><label class="validation-error hide" id="fthNameValidationError">This field is required.</label>
-                            <input type="text" name="FthName" id="FthName">
-                        </div>
-                        <div>
-                            <label>CNIC</label><label class="validation-error hide" id="CNICvalidationError">This field is required.</label>
-                            <input type="text" name="CNIC" id="CNIC">
-
-                            <label>Phone</label><label class="validation-error hide" id="phonevalidationError">This field is required.</label>
-                            <input type="text" name="phone" id="phone">
-                        </div>
-                        <div>
-                            <br />
-                            <label>Course</label><label class="validation-error hide" id="courseValidationError">This field is required.</label>
-                            <select name="course" id="course" class="form-control">
-
-                                <option value="HTML">HTML</option>
-                                <option value="CSS">CSS</option>
-                                <option value=".Net">.Net</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label>Gender</label><br />
-                            <input type="radio" Selected name="gender" id="male" value="Male">
-                            <label for="male">Male</label>
-                            <input type="radio" name="gender" id="female" value="Female">
-                            <label for="female">Female</label>
-                        </div>
-                        <div class="form-action-buttons">
-                            <button class="btn btn-primary" value="Submit">Save</button>
-                        </div>
-                    </form>
-                </td>
+                <th>Full Name</th>
+                <th>Father Name</th>
+                <th>CNIC</th>
+                <th>phone</th>
+                <th>Course</th>
+                <th>Gender</th>
+                <th>Action</th>
+                <th></th>
             </tr>
-        </table>
-        <br />
-        <br />
-        <table class="list" id="studentList">
-            <thead>
-                <tr>
-                    <th>Full Name</th>
-                    <th>Father Name</th>
-                    <th>CNIC</th>
-                    <th>phone</th>
-                    <th>Course</th>
-                    <th>Gender</th>
-                    <th>Action</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody id="tblStudent">
-            </tbody>
-        </table>
+        </thead>
+        <tbody id="tblStudent">
+        </tbody>
+    </table>
 
-    </body>
-      
+</body>
+
 <link href="~/css/studentFormcss.css" rel="stylesheet" />
 <script src="~/js/studentForm.js"></script>
 

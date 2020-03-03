@@ -66,11 +66,7 @@ function PopulateDate() {
 
 
 function resetForm() {
-    document.getElementById("fullName").value = "";
-    document.getElementById("FthName").value = "";
-    document.getElementById("CNIC").value = "";
-    document.getElementById("phone").value = "";
-    document.getElementById("course").value = "";
+    Form.resetForm();
     rowIndex = -1;
 }
 
