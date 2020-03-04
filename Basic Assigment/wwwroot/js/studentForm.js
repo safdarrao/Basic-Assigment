@@ -97,7 +97,7 @@ function onEdit(td) {
     document.getElementById("phone").value = obj.phone;
     document.getElementById("course").value = obj.course;
     document.getElementById("condition").value = obj.condition;
-    resetForm()
+    resetForm();    
     
 }
 
