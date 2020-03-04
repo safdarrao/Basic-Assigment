@@ -15,8 +15,8 @@ table {
 
 td, th {
     border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
+    text-align: justify;
+    padding: 2px;
 }
 
 tr:nth-child(even), table.list thead > tr {
@@ -54,12 +54,10 @@ a {
     color: #0000ee;
     margin-right: 4px;
 }
-
 label.validation-error {
     color: red;
     /*margin-left: 1px;*/
 }
-
 .hide {
     display: none;
 }
