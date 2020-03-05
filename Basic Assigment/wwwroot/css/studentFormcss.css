@@ -22,11 +22,10 @@ td, th {
 tr:nth-child(even), table.list thead > tr {
     background-color: #dddddd;
 }
-
 input[type=text], input[type=number] {
     /*width: 100%;*/
-    padding: 12px 20px;
-    margin: 8px 0;
+    padding: 4px 20px;
+    margin: 20px 0;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -45,9 +44,7 @@ input[type=submit] {
 
 form div.form-action-buttons {
     text-align: right;
-
 }
-
 a {
     cursor: pointer;
     text-decoration: underline;

@@ -2,11 +2,11 @@
 function onFormSubmit() {
     debugger
     if (!validate()) {
-        return;
+        return false;
     }
     else {
         readFormData();
-    }
+    }   
 }
 function readFormData() {
     
@@ -122,57 +122,80 @@ function onDelete(td){
 }
 function validate() {
     isValid = true;
-    //var fullName = document.getElementById("fullName").value;
-    //var fthName = document.getElementById("FthName").value;
-    //var CNIC = document.getElementById("CNIC").value;
-    //var phone = document.getElementById("phone").value;
-    //var course = document.getElementById("course").value;
-   
+    var fullName = document.getElementById("fullName").value;
+    var fthName = document.getElementById("FthName").value;
+    var CNIC = document.getElementById("CNIC").value;
+    var phone = document.getElementById("phone").value;
+    var course = document.getElementById("course").value;
 
-    //if (fullName == "") {
-    //    document.getElementById("fullNameValidationError").style.display = "block";
-    //    return false;
-    //} else {
-    //    document.getElementById("fullNameValidationError").style.display = "none";
-    //}
 
-    //return true;
-        if (document.getElementById("fullName").value == "") {
-            document.getElementById("fullNameValidationError").classList.remove("hide");
-            isValid = false;
-        } else {
-            isValid = true;
-            if (!document.getElementById("fullNameValidationError").classList.contains("hide"))
-                document.getElementById("fullNameValidationError").classList.add("hide");
-        } if (document.getElementById("FthName").value == "") {
-            document.getElementById("fthNameValidationError").classList.remove("hide");
-            isValid = false;
-        } else {
-            isValid = true;
-            if(!document.getElementById("fthNameValidationError").classList.contains("hide"))
-                document.getElementById("fthNameValidationError").classList.add("hide");
+    if (fullName == "") {
+        document.getElementById("fullNameValidationError").style.display = "block";
 
-        } if(document.getElementById("CNIC").value == "") {
-            document.getElementById("CNICvalidationError").classList.remove("hide");
-            isValid = false;
-        } else{
-            isValid = true;
-            if(!document.getElementById("CNICvalidationError").classList.contains("hide"))
-                document.getElementById("CNICvalidationError").classList.add("hide");
-
-        } if(document.getElementById("phone").value == "") {
-            document.getElementById("phonevalidationError").classList.remove("hide");
-            isValid = false;}
-    else {
-        isValid = true;
-        if (!document.getElementById("phonevalidationError").classList.contains("hide"))
-            document.getElementById("phonevalidationError").classList.add("hide");
+    } else {
+        document.getElementById("fullNameValidationError").style.display = "none";
     }
+    if (fthName == "") {
+        document.getElementById("fthNameValidationError").style.display = "block";
+
+    } else {
+        document.getElementById("fthNameValidationError").style.display = "none";
+    }
+    if (CNIC == "") {
+        document.getElementById("CNICnovalidationError").style.display = "block";
+
+    } else {
+        document.getElementById("CNICnovalidationError").style.display = "none";
+    }
+    if (phone == "") {
+        document.getElementById("phonevalidationError").style.display = "block";
+
+    } else {
+        document.getElementById("phonevalidationError").style.display = "none";
+    }
+
+
+    if (fullName == "" || fthName == "" || CNIC == "" || phone == "" ) {
+        return false;
+    }
+
+    
+    //    if (document.getElementById("fullName").value == "") {
+    //        document.getElementById("fullNameValidationError").classList.remove("hide");
+    //        isValid = false;
+    //    } else {
+    //        isValid = true;
+    //        if (!document.getElementById("fullNameValidationError").classList.contains("hide"))
+    //            document.getElementById("fullNameValidationError").classList.add("hide");
+    //    } if (document.getElementById("FthName").value == "") {
+    //        document.getElementById("fthNameValidationError").classList.remove("hide");
+    //        isValid = false;
+    //    } else {
+    //        isValid = true;
+    //        if(!document.getElementById("fthNameValidationError").classList.contains("hide"))
+    //            document.getElementById("fthNameValidationError").classList.add("hide");
+
+    //    } if(document.getElementById("CNIC").value == "") {
+    //        document.getElementById("CNICvalidationError").classList.remove("hide");
+    //        isValid = false;
+    //    } else{
+    //        isValid = true;
+    //        if(!document.getElementById("CNICvalidationError").classList.contains("hide"))
+    //            document.getElementById("CNICvalidationError").classList.add("hide");
+
+    //    } if(document.getElementById("phone").value == "") {
+    //        document.getElementById("phonevalidationError").classList.remove("hide");
+    //        isValid = false;}
+    //else {
+    //    isValid = true;
+    //    if (!document.getElementById("phonevalidationError").classList.contains("hide"))
+    //        document.getElementById("phonevalidationError").classList.add("hide");
+    //}
         //    //} if (document.getElementById("course").value == "select") {
         //    //    document.getElementById("courseValidationError").classList.remove("hide");
         //    //    isValid = false;
 
-    //}
+    
     return isValid;
 }
 

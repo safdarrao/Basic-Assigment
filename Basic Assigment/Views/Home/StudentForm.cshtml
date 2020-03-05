@@ -3,70 +3,139 @@
     ViewData["Title"] = "StudentForm";
 }
 <body onload="PopulateDate()">
-    <table id="maimTable">
-        <tr>
-            <td>
-                <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
-                    <div><h2>Student Registration Form</h2></div>
+    
+   
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <header class="card-header">
+                        @*<a href="" class="float-right btn btn-outline-primary mt-1">Log in</a>*@
+                        <h4 class="card-title mt-2">Student Registration Form</h4>
+                    </header>
 
-                    <input type="text" name="fullName" id="fullName" placeholder="Full Name">
-                    <label class="validation-error hide" id="fullNameValidationError">This field is required.</label>
+                    <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+                        <div id="centerd">
+                            <div class="form-row">
 
-                    <input type="text" name="FthName" id="FthName" placeholder="Father Name">
-                    <label class="validation-error hide" id="fthNameValidationError">This field is required.</label>
-                    <div>
-                        <input type="text" name="CNIC" id="CNIC" placeholder="XXXX-XXXXXXX-X">
-                        <label class="validation-error hide" id="CNICvalidationError"> This field is required.</label>
-                        <input type="text" name="phone" id="phone" placeholder="0300-0000000">
-                        <label class="validation-error hide" id="phonevalidationError">This field is required.</label>
-                    </div>
-                    <br />
-                    <label>Course</label><label class="validation-error hide" id="courseValidationError">This field is required.</label>
-                    <select name="course" id="course" class="form-control">
+                                <div class="col form-group">
+                                    <label>First name </label><br />
+                                    <input type="text" name="fullName" id="fullName" placeholder="Full Name">
+                                    <label class="validation-error hide" id="fullNameValidationError">This field is required.</label>
+                                </div>
+                                <div class="col form-group">
+                                    <label>Father name</label><br />
+                                    <input type="text" name="FthName" id="FthName" placeholder="Father Name">
+                                    <label class="validation-error hide" id="fthNameValidationError">This field is required.</label>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="col form-group">
+                                    <label>CNIC </label><br />
+                                    <input type="text" name="CNIC" id="CNIC" placeholder="XXXXXXXXXXXX">
+                                    <label class="validation-error hide" id="CNICnovalidationError"> plz type only Number.</label>
 
-                        <option value="HTML">HTML</option>
-                        <option value="CSS">CSS</option>
-                        <option value=".Net">.Net</option>
-                    </select>
+                                </div>
+                                <div class="col form-group">
+                                    <label>Phone</label><br>
+                                    <input type="text" name="phone" id="phone" placeholder="03001234567">
+                                    <label class="validation-error hide" id="phonevalidationError">plz type only Number.</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>Course</label>
+                            <select id="course" class="form-control">
+                                <option>HTML</option>
+                                <option>CSS</option>
+                                <option>.Net</option>
+                                <option>DBMS</option>
+                            </select>
+                        </div>
+                        <div class="form-group ">
+                            <label class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="male" name="gender" value="male" checked >
+                                <span class="form-check-label"> Male </span>
+                            </label>
+                            <label class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" id="female" name="gender" value="female">
+                                <span class="form-check-label"> Female</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" id="active" name="active" value="active" checked>
+                                <span class="form-check-label"> Active </span>
+                            </label>
+                          
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block"> Register  </button>
+                        </div> <!-- form-group// -->
+                    </form>
+                </div>
+            </div>
+        </div>
+        @*<div class="form-group">
+                <div><h2>Student Registration Form</h2></div>
 
-                    <div>
-                        <label>Gender</label><br />
-                        <input type="radio" name="gender" id="male" value="Male">
-                        <label for="male">Male</label>
-                        <input type="radio" name="gender" id="female" value="Female">
-                        <label for="female">Female</label>
-                    </div>
-                    <br />
-                    <input type="radio" name="active" id="active" value="active">
-                    <label for="active">Active</label>
-                    <input type="radio" name="active" id="inactive" value="inactive">
-                    <label for="inactive">Inactive</label>
-                    <div class="form-action-buttons">
-                        <button class="btn btn-primary" value="Submit">Save</button>
-                    </div>
-                </form>
-            </td>
-        </tr>
-    </table>
-    <br />
-    <br />
-    <table class="list" id="studentList">
-        <thead>
-            <tr>
-                <th>Full Name</th>
-                <th>Father Name</th>
-                <th>CNIC</th>
-                <th>phone</th>
-                <th>Course</th>
-                <th>Gender</th>
-                <th>Active/Inactive</th>
-                <th>Action</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody id="tblStudent">
-        </tbody>
-    </table>
+                <input type="text" name="fullName" id="fullName" placeholder="Full Name">
+                <label class="validation-error hide" id="fullNameValidationError">This field is required.</label>
+
+                <input type="text" name="FthName" id="FthName" placeholder="Father Name">
+                <label class="validation-error hide" id="fthNameValidationError">This field is required.</label>
+                <div>
+                    <input type="number" name="CNIC" id="CNIC" placeholder="XXXXXXXXXXXX">
+                    <label class="validation-error hide" id="CNICvalidationError"> This field is required.</label>
+                    <label class="validation-error hide" id="CNICnovalidationError"> plz type only Number.</label>
+                    <input type="number" name="phone" id="phone" placeholder="03001234567">
+                    <label class="validation-error hide" id="phonevalidationError">This field is required.</label>
+                </div>
+                <br />
+                <label>Course</label><label class="validation-error hide" id="courseValidationError">This field is required.</label>
+                <select name="course" id="course" class="form-control">
+
+                    <option value="HTML">HTML</option>
+                    <option value="CSS">CSS</option>
+                    <option value=".Net">.Net</option>
+                </select>
+
+                <div>
+                    <label>Gender</label><br /><label class="validation-error hide" id="genderValidationError">This field is required.</label>
+                    <input type="radio" name="gender" id="male" value="Male" checked>
+                    <label for="male">Male</label>
+                    <input type="radio" name="gender" id="female" value="Female">
+                    <label for="female">Female</label>
+                </div>
+                <br />
+                <input type="radio" name="active" id="active" value="active" checked>
+                <label for="active">Active</label>
+                <input type="radio" name="active" id="inactive" value="inactive">
+                <label for="inactive">Inactive</label>
+                <div class="form-action-buttons">
+                    <button class="btn btn-primary" value="Submit">Save</button>
+                </div>
+                </div>
+        </form>*@
+
+        <br />
+        <br />
+        <table class="list" id="studentList">
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Father Name</th>
+                    <th>CNIC</th>
+                    <th>phone</th>
+                    <th>Course</th>
+                    <th>Gender</th>
+                    <th>Active/Inactive</th>
+                    <th>Action</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="tblStudent">
+            </tbody>
+        </table>
 
 </body>
 
