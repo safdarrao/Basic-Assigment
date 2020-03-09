@@ -83,7 +83,6 @@ function resetForm() {
     document.getElementById("CNIC").value = "";
     document.getElementById("phone").value = "";
     document.getElementById("course").value = "";
-    document.getElementById("condition").value = "";
     rowIndex = -1;
 }
 
@@ -128,36 +127,66 @@ function validate() {
     var phone = document.getElementById("phone").value;
     var course = document.getElementById("course").value;
 
-
-    if (fullName == "") {
+    var pjoneRejex = /^\d{11}$/;
+   // cnicno.match(/^\d{5}-\d{7}-\d{1}$/)
+    var CNICRejex = /^\d{5}-\d{7}-\d{1}$/;
+    if (fullName.trim() == "") {
         document.getElementById("fullNameValidationError").style.display = "block";
 
     } else {
         document.getElementById("fullNameValidationError").style.display = "none";
     }
-    if (fthName == "") {
+    if (fthName.trim() == "") {
         document.getElementById("fthNameValidationError").style.display = "block";
 
     } else {
         document.getElementById("fthNameValidationError").style.display = "none";
     }
+    //if (CNIC == "") {
+    //    document.getElementById("CNICnovalidationError").style.display = "block";
+
+    //} else {
+    //    document.getElementById("CNICnovalidationError").style.display = "none";
+    //}
     if (CNIC == "") {
         document.getElementById("CNICnovalidationError").style.display = "block";
-
-    } else {
-        document.getElementById("CNICnovalidationError").style.display = "none";
     }
+    
+    if (CNICRejex.test(CNIC)) {
+        document.getElementById("CNICnovalidationError").style.display = "none";
+    } else {
+        document.getElementById("CNICnovalidationError").style.display = "block";
+}
+
     if (phone == "") {
+
         document.getElementById("phonevalidationError").style.display = "block";
 
-    } else {
-        document.getElementById("phonevalidationError").style.display = "none";
     }
+    if (pjoneRejex.test(phone)) {
+        document.getElementById("phonevalidationError").style.display = "none";
 
+    } else
+    {
+        document.getElementById("phonevalidationError").style.display = "block";
+    }
+   
+    //} else {
+    //    document.getElementById("phonevalidationError").style.display = "none";
+    //}
 
     if (fullName == "" || fthName == "" || CNIC == "" || phone == "" ) {
         return false;
     }
+    if (!CNICRejex.test(CNIC)) {
+        return false
+    }
+    //else {return false}
+    if (!pjoneRejex.test(phone)) {
+        return false;
+    } 
+
+    
 
     
     //    if (document.getElementById("fullName").value == "") {
@@ -195,7 +224,8 @@ function validate() {
         //    //    document.getElementById("courseValidationError").classList.remove("hide");
         //    //    isValid = false;
 
-    
     return isValid;
+    
+    alert();
 }
 
